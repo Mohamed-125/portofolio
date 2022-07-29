@@ -1,38 +1,417 @@
-.App {
-  text-align: center;
+:root {
+  --main-color: #0e1624;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  padding-inline: 120px;
+  margin-inline: auto;
+  max-width: 1200px;
+  padding-block: 20px;
+}
+
+.aboutMe-section,
+.contactMe-section,
+.skills-section,
+.projects-section {
+  background-color: var(--main-color);
+}
+/* nav bar start */
+header {
+  background-color: #0e1624;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.nav-links a {
+  cursor: pointer;
+  padding-inline: 15px;
+}
+
+.nav-links a {
+  cursor: pointer;
+  padding-inline: 15px;
+}
+
+.nav-links button {
+  cursor: pointer;
+  padding: 10px 17px;
+  border-radius: 20px;
+}
+
+.hamburger-menu,
+.hamburger-menu-close {
+  position: relative;
+  cursor: pointer;
+  width: 25px;
+  height: 12px;
+  display: none;
+}
+
+.hamburger-menu span {
+  position: absolute;
+  width: 27px;
+  height: 3px;
+  background-color: rgb(255, 255, 255);
+  transition: 0.4s all ease;
+}
+
+.hamburger-menu span:first-child {
+  top: 0px;
+}
+
+.hamburger-menu span:nth-child(2) {
+  top: 8px;
+}
+
+.hamburger-menu span:last-child {
+  top: 16px;
+}
+
+.hamburger-menu-close span {
+  transition: 0.4s all ease;
+  background-color: red;
+  top: 6px;
+  width: 25px;
+  height: 3px;
+  position: absolute;
+  z-index: 100;
+}
+
+.hamburger-menu-close span:last-child {
+  transform: rotate(45deg);
+}
+
+.hamburger-menu-close span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu-close span:first-child {
+  transform: rotate(-45deg);
+}
+
+.navOpen {
+  background: #0e1624;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  gap: 50px;
+  font-size: 25px;
+  color: white;
+  inset: 0;
+  z-index: 80;
+}
+
+.navOpen a {
+  cursor: pointer;
+}
+
+.navOpen button {
+  padding: 12px 50px;
+  border-radius: 20px;
+}
+
+@media (max-width: 800px) {
+  .container {
+    padding-inline: 50px;
+  }
+  .nav-links a {
+    padding-inline: 10px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
+@media (max-width: 680px) {
+  .nav-links {
+    display: none;
+  }
+  .hamburger-menu,
+  .hamburger-menu-close {
+    display: flex;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    padding-inline: 30px;
+  }
+}
+/* nav bar end */
+
+/* hero-section start */
+.hero-section {
+  background-color: var(--main-color);
+  height: calc(100vh - 78px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-text-div {
+  position: relative;
+  bottom: 7vh;
+}
+
+.hero-text-div h1 {
+  font-size: clamp(30px, 8vw, 64px);
+  background: linear-gradient(to right, #30cfd0, #772bd4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-text-div p {
+  color: rgb(198, 206, 220);
+}
+
+.hero-text-div button {
+  padding: 14px 55px;
+  background-color: rgb(12 160 231);
+  color: white;
+  margin-top: 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s all ease;
+  border: none;
+}
+
+.hero-text-div button:hover {
+  transform: scale(1.1);
+  background-color: rgb(13, 136, 193);
+}
+
+.icons-div {
+  display: flex;
+  gap: 30px;
+}
+
+.icons-div svg {
+  font-size: 30px;
+  position: relative;
+  bottom: 10px;
+  transition: 0.3s all ease;
+}
+
+.icons-div svg:hover {
+  transform: scale(1.2);
+}
+
+.icons-div a:first-child:hover {
+  color: green;
+}
+
+.icons-div a:nth-child(2):hover {
+  color: rgb(0, 193, 193);
+}
+
+.icons-div a:last-child:hover {
+  color: rgb(5, 5, 5);
+}
+
+@media (max-width: 660px) {
+  .hero-section {
+    background-color: var(--main-color);
+    height: calc(100vh - 65px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+  }
+}
+
+/* hero-section end */
+
+/* AboutMe section start */
+
+.aboutMe-div {
+  display: flex;
+  gap: 80px;
+  flex-wrap: wrap-reverse;
+  align-items: center;
+  justify-content: center;
   min-height: 100vh;
+}
+
+.aboutMe-div img {
+  width: 310px;
+  border-radius: 10px;
+}
+
+.aboutMe-text-div {
+  color: #b3bbc9;
+  max-width: 400px;
+}
+/* AboutMe section END */
+
+/* skillsnologies start */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.skills-div {
+  width: 100%;
+  background-color: white;
+  height: 330px;
+  max-width: 360px;
+  margin-inline: auto;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  transition: 0.3s all ease;
+}
+
+.skills-div:hover {
+  transform: scale(1.05);
+}
+
+.skills-div img {
+  width: 60%;
+  height: 170px;
+  margin-bottom: 30px;
+}
+
+.skills-div p {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/* skillsnologies end */
+
+/* projects start  */
+
+.project-div {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 50px;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
+  margin-bottom: 100px;
+}
+
+.project-div img {
+  width: 50%;
+  max-width: 400px;
+  min-width: 260px;
+  margin-inline: auto;
+}
+
+.project-info {
+  color: white;
+  line-break: anywhere;
+  max-width: 500px;
+  min-width: 260px;
+}
+
+.project-info h2 {
+  margin-bottom: 20px;
+  font-size: 32px;
+}
+
+.project-info a {
+  margin-right: 30px;
+}
+
+.project-info button {
+  margin-top: 40px;
+  padding: 10px 50px;
+  border-radius: 20px;
+  border: none;
+  background-color: transparent;
+  border: 2px solid #30cfd0;
+  color: #30cfd0;
+  transition: 0.3s all ease;
+}
+
+.project-info button:hover {
+  transform: scale(1.1);
+}
+/* projects end */
+
+/* contact me start */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form label {
+  color: white;
+  font-size: 20px;
+  margin-block: 10px;
+  font-weight: 600;
+}
+
+.contact-form input {
+  padding: 7px 10px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+}
+
+.contact-form textarea {
+  padding: 5px 15px;
+  font-family: "Segoe UI";
+  font-size: 18px;
+  width: 100%;
+  height: 200px;
+}
+
+.contact-form textarea::placeholder,
+.contact-form input::placeholder {
+  font-size: 17px;
+}
+
+.contact-form button {
+  padding: 14px 20px;
+  background-color: #f6f6f600;
+  color: #30cfd0;
+  border: 3px solid #30cfd0;
+  margin-top: 20px;
+  border-radius: 25px;
+  width: 90%;
+  margin-inline: auto;
+  transition: 0.3s all ease;
+}
+
+.contact-form button:hover {
+  background-color: #30cfd0;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* contact me END  */
