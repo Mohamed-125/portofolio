@@ -26,13 +26,14 @@ const Projects = () => {
   }, []);
 
   useEffect(() => {
-    if (value) {
+    if (value === "all") {
+      setFilteredProjects(projects);
+    } else if (value) {
       setFilteredProjects(
         projects.filter((project) => project.sorting.includes(value))
       );
     }
-    if (value === "all") setFilteredProjects(projects);
-  }, [value]);
+  }, [value, projects]);
   useEffect(() => {
     console.log(filteredProjects);
   }, [filteredProjects]);
