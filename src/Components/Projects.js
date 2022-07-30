@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 const Projects = () => {
   const [projects, setProjects] = useState([]);
+  const [filteredProjects, setFilteredProjects] = useState([]);
+  const [value, setValue] = useState("all");
   useEffect(() => {
     async function fetchProjects() {
       await axios
@@ -11,7 +13,30 @@ const Projects = () => {
         });
     }
     fetchProjects();
+
+    document.querySelectorAll(".option-button").forEach((option) => {
+      option.addEventListener("click", (e) => {
+        document.querySelectorAll(".option-button").forEach((option) => {
+          option.classList.remove("option-button-active");
+        });
+        e.target.classList.add("option-button-active");
+        setValue(e.target.innerText.toLowerCase());
+      });
+    });
   }, []);
+
+  useEffect(() => {
+    if (value) {
+      setFilteredProjects(
+        projects.filter((project) => project.sorting.includes(value))
+      );
+    }
+    if (value === "all") setFilteredProjects(projects);
+  }, [value]);
+  useEffect(() => {
+    console.log(filteredProjects);
+  }, [filteredProjects]);
+
   return (
     <section id="projects" className="projects-section">
       <div className="projects-div container">
@@ -25,29 +50,51 @@ const Projects = () => {
         >
           My Work
         </h1>
+        <div className="options-div">
+          <button className="option-button-active option-button">All</button>
+          <button className="option-button">Redux</button>
+          <button className="option-button">Sass</button>
+          <button className="option-button">Tailwind</button>
+          <button className="option-button">Angular</button>
+          <button className="option-button">React js</button>
+          <button className="option-button">Apis</button>
+          <button className="option-button">Wordpress</button>
+        </div>
         <div className="projects-container">
-          {projects.map((project, index) => (
-            <div
-              className="project-div"
-              style={
-                index % 2 === 1
-                  ? { flexDirection: "row-reverse" }
-                  : { flexDirection: "row" }
-              }
-            >
-              <img src={project.img}></img>
-              <div className="project-info">
-                <h2>{project.name}</h2>
-                <p style={{ color: " #b3bbc9" }}>{project.desc}</p>
-                <a href={project.preview} target="_blank">
-                  <button className="preview">Preview Link</button>
-                </a>
-                <a href={project.githupLink} target="_blank">
-                  <button className="githupRepo">Githup Repo</button>
-                </a>
+          {filteredProjects.length > 0 ? (
+            filteredProjects.map((project, index) => (
+              <div
+                className="project-div"
+                style={
+                  index % 2 === 1
+                    ? { flexDirection: "row-reverse" }
+                    : { flexDirection: "row" }
+                }
+              >
+                <img src={project.img}></img>
+                <div className="project-info">
+                  <h2>{project.name}</h2>
+                  <p style={{ color: " #b3bbc9" }}>{project.desc}</p>
+                  <a href={project.preview} target="_blank">
+                    <button className="preview">Preview Link</button>
+                  </a>
+                  <a href={project.githupLink} target="_blank">
+                    <button className="githupRepo">Githup Repo</button>
+                  </a>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <h3
+              style={{
+                color: "white",
+                textAlign: "center",
+                marginBlock: "50px",
+              }}
+            >
+              There is no projects with technology yet
+            </h3>
+          )}
         </div>
       </div>
     </section>

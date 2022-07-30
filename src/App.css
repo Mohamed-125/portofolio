@@ -363,6 +363,28 @@ header {
 .project-info button:hover {
   transform: scale(1.1);
 }
+
+.options-div {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.option-button {
+  padding: 6px 50px;
+  background-color: #30cfd0;
+  color: white;
+  border-radius: 20px;
+  border: 1px solid black;
+  outline: none;
+}
+
+.option-button-active {
+  background-color: aquamarine;
+  color: black;
+  transform: scale(1.2);
+}
 /* projects end */
 
 /* contact me start */
