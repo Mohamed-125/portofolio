@@ -326,7 +326,7 @@ header {
 
 .project-div img {
   width: 50%;
-  max-width: 430px;
+  max-width: 400px;
   min-width: 260px;
   margin-inline: auto;
 }
@@ -444,7 +444,7 @@ header {
 }
 /* contact me END  */
 
-@media (max-width: 700px) {
+@media (max-width: 1158px) {
   .project-div {
     text-align: center;
     font-size: 17px;
