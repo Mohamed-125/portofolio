@@ -56,10 +56,8 @@ const Projects = () => {
           <button className="option-button">Redux</button>
           <button className="option-button">Sass</button>
           <button className="option-button">Tailwind</button>
-          <button className="option-button">Angular</button>
           <button className="option-button">React js</button>
           <button className="option-button">Apis</button>
-          <button className="option-button">Wordpress</button>
         </div>
         <div className="projects-container">
           {filteredProjects.length > 0 ? (
@@ -76,12 +74,14 @@ const Projects = () => {
                 <div className="project-info">
                   <h2>{project.name}</h2>
                   <p style={{ color: " #b3bbc9" }}>{project.desc}</p>
-                  <a href={project.preview} target="_blank">
-                    <button className="preview">Preview Link</button>
-                  </a>
-                  <a href={project.githupLink} target="_blank">
-                    <button className="githupRepo">Githup Repo</button>
-                  </a>
+                  <div className="buttons-div">
+                    <a href={project.preview} target="_blank">
+                      <button className="preview">Preview Link</button>
+                    </a>
+                    <a href={project.githupLink} target="_blank">
+                      <button className="githupRepo">Githup Repo</button>
+                    </a>
+                  </div>
                 </div>
               </div>
             ))

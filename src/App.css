@@ -317,25 +317,22 @@ header {
 /* projects start  */
 
 .project-div {
-  margin-top: 60px;
   display: flex;
   flex-direction: row-reverse;
   gap: 50px;
   justify-content: center;
   flex-wrap: wrap-reverse;
-  margin-bottom: 100px;
 }
 
 .project-div img {
   width: 50%;
-  max-width: 400px;
+  max-width: 430px;
   min-width: 260px;
   margin-inline: auto;
 }
 
 .project-info {
   color: white;
-  line-break: anywhere;
   max-width: 500px;
   min-width: 260px;
 }
@@ -344,13 +341,21 @@ header {
   margin-bottom: 20px;
   font-size: 32px;
 }
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
 
-.project-info a {
-  margin-right: 30px;
+.buttons-div {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: start;
+  margin-top: 30px;
 }
 
 .project-info button {
-  margin-top: 40px;
   padding: 10px 50px;
   border-radius: 20px;
   border: none;
@@ -369,6 +374,7 @@ header {
   gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 50px;
 }
 
 .option-button {
@@ -437,3 +443,17 @@ header {
   color: white;
 }
 /* contact me END  */
+
+@media (max-width: 700px) {
+  .project-div {
+    text-align: center;
+    font-size: 17px;
+    word-wrap: normal;
+  }
+  .project-info h2 {
+    font-size: 26px;
+  }
+  .buttons-div {
+    justify-content: center;
+  }
+}
