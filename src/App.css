@@ -26,9 +26,9 @@ button {
 }
 
 .container {
-  padding-inline: 120px;
+  padding-inline: 60px;
   margin-inline: auto;
-  max-width: 1200px;
+  max-width: 1300px;
   padding-block: 20px;
 }
 
@@ -316,19 +316,77 @@ header {
 
 /* projects start  */
 
-.project-div {
-  display: flex;
-  flex-direction: row-reverse;
-  gap: 50px;
-  justify-content: center;
-  flex-wrap: wrap-reverse;
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(350px, 1fr));
+  row-gap: 40px;
+  gap: 20px;
 }
 
+@media (max-width: 1200px) {
+  .projects-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+@media (max-width: 500px) {
+  .projects-container {
+    grid-template-columns: repeat(1, minmax(260px, 1fr));
+  }
+}
+.project-div {
+  display: flex;
+  gap: 50px;
+  cursor: pointer;
+  position: relative;
+  height: 45vh;
+  min-height: 320px;
+  max-height: 380px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.project-info-2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: 0%;
+  border-radius: 10px;
+  color: white;
+  transition: 0.3s all ease;
+  padding-inline: 30px;
+  padding-block: 0px;
+  background-color: #009797b5;
+}
+
+.project-div:hover > .project-info-2 {
+  height: 100%;
+  padding-block: 30px;
+}
+
+.project-info-2 a svg {
+  display: block;
+  width: 34px;
+  transition: 0.3s all ease;
+}
+
+.project-info-2 a:hover svg {
+  transform: scale(1.3);
+}
+
+.links-div {
+  margin-top: auto;
+  align-self: center;
+  gap: 40px;
+  display: flex;
+}
 .project-div img {
-  width: 50%;
-  max-width: 400px;
-  min-width: 260px;
-  margin-inline: auto;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 .project-info {
@@ -340,11 +398,6 @@ header {
 .project-info h2 {
   margin-bottom: 20px;
   font-size: 32px;
-}
-.projects-container {
-  display: flex;
-  flex-direction: column;
-  gap: 70px;
 }
 
 .buttons-div {
@@ -379,18 +432,44 @@ header {
 
 .option-button {
   padding: 6px 50px;
-  background-color: #30cfd0;
+  background-color: transparent;
   color: white;
   border-radius: 20px;
-  border: 1px solid black;
+  border: 1px solid #30cfd0;
   outline: none;
 }
 
 .option-button-active {
-  background-color: aquamarine;
   color: black;
+  transition: 0.2s all ease;
   transform: scale(1.2);
+  position: relative;
+  border: 0;
 }
+
+.option-button-active::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  animation: active-animation 0.3s forwards;
+  border-radius: 20px;
+  height: 100%;
+  right: 0;
+  z-index: -1;
+  bottom: 0;
+  transition: 0.2s all ease;
+  background-color: #30cfd0;
+}
+
+@keyframes active-animation {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 /* projects end */
 
 /* contact me start */
